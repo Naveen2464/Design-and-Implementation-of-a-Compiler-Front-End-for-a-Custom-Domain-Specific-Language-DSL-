@@ -1,0 +1,46 @@
+﻿<program> ::= <statements>
+
+<statements> ::= <statement>
+               | <statement> <statements>
+
+<statement> ::= <declaration>
+              | <assignment>
+              | <print_statement>
+              | <repeat_statement>
+              | <cycle_statement>
+              | <check_statement>
+
+<declaration> ::= "var" IDENTIFIER "=" <expression>
+
+<assignment> ::= IDENTIFIER "=" <expression>
+
+<print_statement> ::= "printx" IDENTIFIER
+
+<repeat_statement> ::= "repeat" "(" <condition> ")" "{" <statements> "}"
+
+<cycle_statement> ::= "cycle" "(" <assignment> ";" <condition> ";" <assignment> ")" "{" <statements> "}"
+
+<check_statement> ::= "check" "(" <condition> ")" "{" <statements> "}" <else_clause>
+
+<else_clause> ::= "otherwise" "{" <statements> "}"
+               | "elif" "(" <condition> ")" "{" <statements> "}" <else_clause>
+               | ε
+
+<condition> ::= <expression> "<" <expression>
+              | <expression> ">" <expression>
+              | <expression> "<=" <expression>
+              | <expression> ">=" <expression>
+              | <expression> "==" <expression>
+              | <expression> "!=" <expression>
+
+<expression> ::= <expression> "+" <term>
+               | <expression> "-" <term>
+               | <term>
+
+<term> ::= <term> "*" <factor>
+         | <term> "/" <factor>
+         | <factor>
+
+<factor> ::= NUMBER
+           | IDENTIFIER
+           | "(" <expression> ")"
